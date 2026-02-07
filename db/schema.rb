@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_02_07_192458) do
+ActiveRecord::Schema[8.0].define(version: 2026_02_07_195222) do
   create_table "tasks", force: :cascade do |t|
     t.string "title", limit: 100
     t.string "description", limit: 500
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "work_block_id"
+    t.index ["work_block_id"], name: "index_tasks_on_work_block_id"
   end
 
   create_table "work_blocks", force: :cascade do |t|
@@ -24,4 +26,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_02_07_192458) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "tasks", "work_blocks"
 end
