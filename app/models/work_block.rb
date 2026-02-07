@@ -1,0 +1,2 @@
+class WorkBlock < ApplicationRecord
+end
