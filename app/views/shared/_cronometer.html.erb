@@ -1,0 +1,13 @@
+<div data-controller="cronometer">
+  <span data-cronometer-target="display">00:00:00</span>
+
+  <div class="flex space-x-1">
+    <button data-action="cronometer#start" data-cronometer-target="start">Iniciar</button>
+    <button data-action="cronometer#pause" data-cronometer-target="pause" class="hidden">Pausar</button>
+    <button data-action="cronometer#resume" data-cronometer-target="resume" class="hidden">Resumir</button>
+    <%= form_with url: work_blocks_finish_path, method: :post, data: { action: "submit->cronometer#finish" } do |f| %>
+      <%= hidden_field_tag :total_seconds, 0, data: { cronometer_target: "input" } %>
+      <%= f.submit "Finalizar", class: "hidden", data: { cronometer_target: "finish" } %>
+    <% end %>
+  </div>
+</div>
